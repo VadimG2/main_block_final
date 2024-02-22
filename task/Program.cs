@@ -11,6 +11,7 @@
 // [“Russia”, “Denmark”, “Kazan”] → []
 
 string[] array = ["Sun", "Monday", "Tuesday", "Wed", "Thursday", "Fri", "Sat"];
+int num = 3;
 
 int[] StringArrayLengths(string[] array)
 {
@@ -21,3 +22,29 @@ int[] StringArrayLengths(string[] array)
     }
     return arrayLengths;
 }
+
+void ArrayCut(string[] array, int cutNum)
+{
+    int[] arrayLengths = StringArrayLengths(array);
+    int count = 0; // Переменная для подсчета количества строк, удовлетворяющих условию
+    for (int i = 0; i < array.Length; i++)
+    {
+        if (arrayLengths[i] <= cutNum)
+        {
+            count++; // Увеличиваем счетчик
+        }
+    }
+    string[] cuttedArray = new string[count];
+    int index = 0;
+    for (int i = 0; i < array.Length; i++)
+    {
+        if (arrayLengths[i] <= cutNum)
+        {
+            cuttedArray[index] = array[i];
+            index++;
+        }
+    }
+    Console.WriteLine($"[{string.Join(", ", array)}] => [{string.Join(", ", cuttedArray)}]");
+}
+
+ArrayCut(array, num);
