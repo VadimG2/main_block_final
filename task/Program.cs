@@ -10,7 +10,7 @@
 // [“1234”, “1567”, “-2”, “computer science”] → [“-2”]
 // [“Russia”, “Denmark”, “Kazan”] → []
 
-string[] array = ["Sun", "Monday", "Tuesday", "Wed", "Thursday", "Fri", "Sat"];
+string[] array = { "Russia", "Denmark", "Kazan"};
 int num = 3;
 
 int[] StringArrayLengths(string[] array)
@@ -23,7 +23,7 @@ int[] StringArrayLengths(string[] array)
     return arrayLengths;
 }
 
-void ArrayCut(string[] array, int cutNum)
+int ArrayCutLength(string[] array, int cutNum)
 {
     int[] arrayLengths = StringArrayLengths(array);
     int count = 0; // Переменная для подсчета количества строк, удовлетворяющих условию
@@ -34,7 +34,12 @@ void ArrayCut(string[] array, int cutNum)
             count++; // Увеличиваем счетчик
         }
     }
-    string[] cuttedArray = new string[count];
+    return count;
+}
+void ArrayCut(string[] array, int cutNum)
+{
+    int[] arrayLengths = StringArrayLengths(array);
+    string[] cuttedArray = new string[ArrayCutLength(array, num)];
     int index = 0;
     for (int i = 0; i < array.Length; i++)
     {
